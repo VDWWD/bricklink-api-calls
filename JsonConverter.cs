@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace VdwwdBrickLink
 {
+    //the converter is needed because the data property in the order root can either be an array or a single item
     internal class SingleOrArrayConverter<T> : JsonConverter
     {
         public override bool CanConvert(Type type)
