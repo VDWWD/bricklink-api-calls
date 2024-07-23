@@ -2,7 +2,16 @@
 VdwwdBrickLink is a light-weight C# library that can make API calls to the Lego BrickLink API to retrieve order(s). Then the order status and payent status can be updated.
 
 
-# Initialize the VdwwdBrickLink library
+## Generate your keys and tokens
+1. Create a [BrickLink](https://www.bricklink.com/) account if you do not have one and then become a [Seller](https://www.bricklink.com/help.asp?helpID=2440).
+2. Go to the [BrickLink API Consumer Registration](https://www.bricklink.com/v2/api/register_consumer.page) page.
+3. Add a Callback URL to which BrickLink will post the order updates.
+4. Generate your keys and tokens. Note: You will need a TokenValue and TokenSecret per IP address.
+5. Read the [API guide](https://www.bricklink.com/v3/api.page).
+6. If you want to update the order status and payment status separately then you have to enable the option 'order payment status from order status' on the [My Orders Settings](https://www.bricklink.com/orderSettings.asp) page.
+
+
+## Initialize the VdwwdBrickLink library
 Set your API keys and tokens in VdwwdBrickLink library. This only needs to be done only once, like in the Application_Start() or MainWindow() of your application.
 
     protected void Application_Start()
@@ -15,7 +24,7 @@ Set your API keys and tokens in VdwwdBrickLink library. This only needs to be do
     }
 
 
-# Retrieve orders placed in your store
+## Retrieve orders placed in your store
 Get a list of orders placed in your store.
 By default you will get all the orders but you can filter by status Completed, Pending or Purged.
 
@@ -26,14 +35,14 @@ By default you will get all the orders but you can filter by status Completed, P
     List<VdwwdBrickLink.Classes.Order> orders = await VdwwdBrickLink.Orders.getOrders(VdwwdBrickLink.Enums.OrderFilter.Completed);
 
 
-# Get a specific order
+## Get a specific order
 Get a single order placed in your store with the order ID.
 
     //get a single order with the order id
     VdwwdBrickLink.Classes.Order order = await VdwwdBrickLink.Orders.getOrder(12345678);
 
 
-# Updating the status of an order
+## Updating the status of an order
 Update the status or payment status of an order with the order ID.
 A paymemt status is simplified to either true or false, but BrickLink has more options if needed.
 The status can be one of the following options: Pending, Completed, Packed, Paid, Processing, Ready, Shipped or Updated.
@@ -45,7 +54,7 @@ The status can be one of the following options: Pending, Completed, Packed, Paid
     bool result = await VdwwdBrickLink.Orders.updateOrderStatus(12345678, VdwwdBrickLink.Enums.OrderStatus.Packed);
 
 
-# Receive the order updates posted to your Callback URL
+## Receive the order updates posted to your Callback URL
 BrickLink can post order updates to your specified Callback URL. These posts are a List of Push Notifications.
 Depending on the application type used you can receive them in multiple ways. Below are two examples. VdwwdBrickLink cannot receive them for you but it can convert the posted Stream to a list of notifications.
 
