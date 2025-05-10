@@ -159,6 +159,13 @@ namespace VdwwdBrickLink
             //create the correct url
             string url = $"/items/{type.ToString().ToLower()}/{catalogID}";
 
+            //there must be a type
+            if (type == Enums.CatalogItemType.None)
+            {
+                return null;
+            }
+
+            //append the url per action
             if (action == Enums.CatalogItemAction.Colors)
             {
                 url += "/colors";
