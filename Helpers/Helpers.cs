@@ -10,14 +10,14 @@ using Newtonsoft.Json;
 
 namespace VdwwdBrickLink
 {
-    public class Helpers
+    internal class Helpers
     {
         /// <summary>
         /// Converts a decimal in string format to an actual decimal object.
         /// </summary>
         /// <param name="value">The decimal in string format.</param>
         /// <returns>System.Decimal</returns>
-        public static decimal parseDecimal(string value)
+        internal static decimal parseDecimal(string value)
         {
             //try and convert the string decimal in en-us format because the decimal separator is a dot
             decimal amount = decimal.TryParse(value, NumberStyles.Number, new CultureInfo("en-US"), out amount) ? amount : 0;
