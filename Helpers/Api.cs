@@ -111,6 +111,7 @@ namespace VdwwdBrickLink
         private static async Task<string> callBricklinkApi(HttpMethod method, string url, string json, SortedDictionary<string, string> extra_parameters)
         {
             HttpResponseMessage response;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //create the full url
             url = Variables.ApiUrl + url;
