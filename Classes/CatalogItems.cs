@@ -63,10 +63,10 @@ namespace VdwwdBrickLink
             public CatalogPriceItem item { get; set; }
             public string new_or_used { get; set; }
             public string currency_code { get; set; }
-            public string min_price { get; set; }
-            public string max_price { get; set; }
-            public string avg_price { get; set; }
-            public string qty_avg_price { get; set; }
+            public decimal min_price { get; set; }
+            public decimal max_price { get; set; }
+            public decimal avg_price { get; set; }
+            public decimal qty_avg_price { get; set; }
             public int unit_quantity { get; set; }
             public int total_quantity { get; set; }
             public List<CatalogPriceDetail> price_detail { get; set; }
